@@ -1,0 +1,23 @@
+version: '3.8'
+services:
+  clstatsdb:
+    build: 
+      context: ./docker-files/db
+    image: raphrosenberg/clstatsdb
+    container_name: clstatsdb
+    ports: 
+      - "3306:3306"
+    volumes: 
+      - clstatsdbdata:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=clstatsdbpass
+  clstatsredis:
+    image: "redis:alpine"
+  clstatsweb:
+    build:
+      context: ./docker-files/web
+    image: raphrosenberg/clstatsweb
+    ports:
+      - "8000:5000"
+
+
