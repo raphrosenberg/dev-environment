@@ -19,5 +19,6 @@ services:
     image: raphrosenberg/clstatsweb
     ports:
       - "8000:5000"
-
+volumes:
+  clstatsdbdata: {}
 
